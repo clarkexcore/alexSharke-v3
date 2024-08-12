@@ -1,5 +1,6 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, Link as MuiLink } from "@mui/material";
 import SignInForm from "@/components/signIn/signInForm.component";
+import Link from "next/link";
 
 const SigninPage: React.FC = () => {
 	return (
@@ -9,6 +10,16 @@ const SigninPage: React.FC = () => {
 					Sign In
 				</Typography>
 				<SignInForm />
+				<Box sx={{ display: "flex", justifyContent: "center", mt: 5 }}>
+					<Link href="/">
+						<MuiLink
+							underline={"hover"}
+							sx={{ textDecoration: "none" }}
+						>
+							Back to Home Page
+						</MuiLink>
+					</Link>
+				</Box>
 			</Container>
 		</Box>
 	);
