@@ -12,25 +12,28 @@ interface SignUpFormProps {
 
 const SignUpForm: React.FC<SignUpFormProps> = ({ email }: SignUpFormProps) => {
 	const [password, setPassword] = useState<string>("");
+	const [error, setError] = useState<string>("");
 
 	const signUpUser = async () => {
 		const { data, error } = await supabase.auth.signUp({ email, password });
 
 		if (error) {
 			console.error("Error signing up:", error.message);
+			setError("Error signing up.");
 		} else {
 			console.log("User signed up successfully!", data);
-			markUserAsInvited(email);
+			markUserAsAccepted(email);
 		}
 	};
 
-	const markUserAsInvited = async (email: string) => {
+	const markUserAsAccepted = async (email: string) => {
 		const { error } = await supabase
 			.from("approved_users")
 			.update({ accepted: true })
 			.eq("email", email);
 
 		if (error) {
+			setError("Error updating invitation status.");
 			console.error("Error updating invitation status:", error.message);
 		}
 	};
@@ -43,6 +46,15 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ email }: SignUpFormProps) => {
 						level="error"
 						message="You need to be invited in order to access this page and
 						sign-up."
+					/>
+				)}
+
+				{error !== "" && (
+					<AlertComponent
+						level="error"
+						message={error}
+						clearTime={10000}
+						resetState={setError}
 					/>
 				)}
 
