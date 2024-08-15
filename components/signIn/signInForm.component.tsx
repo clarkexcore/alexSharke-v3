@@ -4,27 +4,56 @@ import { useState } from "react";
 import { signIn } from "@/hooks/useAuth";
 import { Box, Button, TextField } from "@mui/material";
 import { SignInCard } from "./signInForm.styled";
+import { AlertComponent } from "../common/common.components";
+
+interface LoginFormData {
+	email: string;
+	password: string;
+}
 
 const SignInForm: React.FC = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+	const [error, setError] = useState<string>("");
+	const [data, setData] = useState<LoginFormData>({
+		email: "",
+		password: "",
+	});
 
 	const handleSignIn = async () => {
-		const user = await signIn(email, password);
-		if (user) {
-			console.log("User signed in successfully");
+		try {
+			const user = await signIn(data.email, data.password);
+			if (user) {
+				console.log("User signed in successfully");
+			}
+		} catch (err: any) {
+			setError(err?.message ?? "Login Error");
 		}
+	};
+
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const { name, value } = e.target;
+		setData((prev: LoginFormData) => ({
+			...prev,
+			[name]: value,
+		}));
 	};
 
 	return (
 		<Box sx={{ mt: 5, display: "flex", justifyContent: "center" }}>
 			<SignInCard>
+				{error !== "" && (
+					<AlertComponent
+						level="error"
+						message={error}
+						clearTime={10000}
+						resetState={setError}
+					/>
+				)}
 				<TextField
 					sx={{ width: "100%", mb: 3 }}
 					id="email"
 					label="Email"
 					variant="outlined"
-					onChange={e => setEmail(e.target.value)}
+					onChange={handleChange}
 				/>
 				<TextField
 					sx={{ width: "100%", mb: 3 }}
@@ -32,7 +61,7 @@ const SignInForm: React.FC = () => {
 					label="Password"
 					variant="outlined"
 					type="password"
-					onChange={e => setPassword(e.target.value)}
+					onChange={handleChange}
 				/>
 				<Button
 					variant="contained"

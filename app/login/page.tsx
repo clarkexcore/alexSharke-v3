@@ -7,18 +7,17 @@ const SigninPage: React.FC = () => {
 		<Box>
 			<Container maxWidth="lg" sx={{ pt: "50px", pb: "100px" }}>
 				<Typography variant="h1" sx={{ textAlign: "center" }}>
-					Sign In
+					Login
 				</Typography>
 				<SignInForm />
 				<Box sx={{ display: "flex", justifyContent: "center", mt: 5 }}>
-					<Link href="/">
-						<MuiLink
-							underline={"hover"}
-							sx={{ textDecoration: "none" }}
-						>
-							Back to Home Page
-						</MuiLink>
-					</Link>
+					<MuiLink
+						href="/"
+						underline={"hover"}
+						sx={{ textDecoration: "none" }}
+					>
+						Back to Home Page
+					</MuiLink>
 				</Box>
 			</Container>
 		</Box>

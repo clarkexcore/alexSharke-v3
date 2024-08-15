@@ -10,6 +10,7 @@ export default function Home() {
 				.select("*")
 				.select();
 
+			console.log(data);
 			if (error !== null) {
 				throw Error("Error fetching admin users table");
 			}

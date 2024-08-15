@@ -1,5 +1,5 @@
 // hooks/useAuth.ts
-import { supabase } from "../lib/supabaseClient";
+import { supabase } from "@/lib/supabaseClient";
 
 export const signUp = async (email: string, password: string) => {
 	const { data, error } = await supabase.auth.signUp({
@@ -8,8 +8,7 @@ export const signUp = async (email: string, password: string) => {
 	});
 
 	if (error) {
-		console.error("Error signing up:", error.message);
-		return null;
+		throw Error(error.message as unknown as string);
 	}
 
 	return data;
@@ -23,7 +22,7 @@ export const signIn = async (email: string, password: string) => {
 
 	if (error) {
 		console.error("Error signing in:", error.message);
-		return null;
+		throw Error(error.message as unknown as string);
 	}
 
 	return data;
@@ -34,5 +33,6 @@ export const signOut = async () => {
 
 	if (error) {
 		console.error("Error signing out:", error.message);
+		throw Error(error.message as unknown as string);
 	}
 };
