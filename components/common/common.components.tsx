@@ -1,7 +1,7 @@
 "use client";
 
 import { Alert, AlertColor } from "@mui/material";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 interface AlertComponentProps {
 	level: AlertColor;
@@ -16,31 +16,17 @@ export function AlertComponent({
 	clearTime,
 	resetState,
 }: AlertComponentProps) {
-	const [alertMessage, setAlertMessage] = useState(message);
-
-	if (clearTime) {
+	if (clearTime && resetState) {
 		setTimeout(() => {
-			setAlertMessage("");
-
-			if (resetState) {
-				resetState("");
-			}
+			resetState("");
 		}, clearTime);
 	}
 
-	useEffect(() => {
-		setAlertMessage(message);
-	}, [message]);
-
 	return (
 		<>
-			{alertMessage !== "" ? (
-				<Alert severity={level} sx={{ mb: 3 }}>
-					{message}
-				</Alert>
-			) : (
-				<></>
-			)}
+			<Alert severity={level} sx={{ mb: 3 }}>
+				{message}
+			</Alert>
 		</>
 	);
 }
