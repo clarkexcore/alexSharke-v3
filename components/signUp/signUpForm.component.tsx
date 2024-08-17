@@ -5,6 +5,8 @@ import { Box, Button, TextField } from "@mui/material";
 import { supabase } from "@/lib/supabaseClient";
 import { SignInCard } from "../signIn/signInForm.styled";
 import { AlertComponent } from "../common/common.components";
+import { Session, User } from "@supabase/supabase-js";
+import { SupabaseAuthResp } from "@/types/common";
 
 interface SignUpFormProps {
 	email: string;
@@ -22,14 +24,17 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ email }: SignUpFormProps) => {
 			setError("Error signing up.");
 		} else {
 			console.log("User signed up successfully!", data);
-			markUserAsAccepted(email);
+			markUserAsAccepted(email, data);
 		}
 	};
 
-	const markUserAsAccepted = async (email: string) => {
+	const markUserAsAccepted = async (
+		email: string,
+		data: SupabaseAuthResp
+	) => {
 		const { error } = await supabase
 			.from("approved_users")
-			.update({ accepted: true })
+			.update({ accepted: true, user_id: data.user?.id })
 			.eq("email", email);
 
 		if (error) {

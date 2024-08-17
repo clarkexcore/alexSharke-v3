@@ -52,6 +52,7 @@ const SignInForm: React.FC = () => {
 					sx={{ width: "100%", mb: 3 }}
 					id="email"
 					label="Email"
+					name="email"
 					variant="outlined"
 					onChange={handleChange}
 				/>
@@ -59,6 +60,7 @@ const SignInForm: React.FC = () => {
 					sx={{ width: "100%", mb: 3 }}
 					id="password"
 					label="Password"
+					name="password"
 					variant="outlined"
 					type="password"
 					onChange={handleChange}
