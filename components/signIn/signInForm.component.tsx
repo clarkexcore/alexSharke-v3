@@ -5,6 +5,7 @@ import { signIn } from "@/hooks/useAuth";
 import { Box, Button, TextField } from "@mui/material";
 import { SignInCard } from "./signInForm.styled";
 import { AlertComponent } from "../common/common.components";
+import { useRouter } from "next/navigation";
 
 interface LoginFormData {
 	email: string;
@@ -12,6 +13,8 @@ interface LoginFormData {
 }
 
 const SignInForm: React.FC = () => {
+	const router = useRouter();
+
 	const [error, setError] = useState<string>("");
 	const [data, setData] = useState<LoginFormData>({
 		email: "",
@@ -23,6 +26,7 @@ const SignInForm: React.FC = () => {
 			const user = await signIn(data.email, data.password);
 			if (user) {
 				console.log("User signed in successfully");
+				router.push("/admin");
 			}
 		} catch (err: any) {
 			setError(err?.message ?? "Login Error");
