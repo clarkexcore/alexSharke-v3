@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "@/theme";
+import { headers } from "next/headers";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -13,6 +14,25 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const headersList = headers();
+	const pathName = headersList.get("x-pathname");
+
+	console.log(pathName);
+	// console.log(headersList);
+
+	const getLayout = () => {
+		if (pathName?.startsWith("/admin")) {
+			return (
+				<>
+					<p>This is admin</p>
+					{children}
+				</>
+			);
+		}
+
+		return <>{children}</>;
+	};
+
 	return (
 		<html lang="en">
 			<head>
@@ -26,7 +46,7 @@ export default function RootLayout({
 			<body>
 				<ThemeProvider theme={theme}>
 					<CssBaseline />
-					{children}
+					{getLayout()}
 				</ThemeProvider>
 			</body>
 		</html>
