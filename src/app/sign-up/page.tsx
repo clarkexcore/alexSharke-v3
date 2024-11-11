@@ -1,6 +1,6 @@
 "use client";
 
-import SignUpForm from "@/components/signUp/signUpForm.component";
+import SignUpForm from "@/src/components/signUp/signUpForm.component";
 import { Box, Container, Typography } from "@mui/material";
 import { useSearchParams } from "next/navigation";
 
