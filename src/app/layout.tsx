@@ -40,7 +40,7 @@ export default async function RootLayout({
 					rel="stylesheet"
 				/>
 			</head>
-			<body>
+			<body suppressHydrationWarning>
 				<ThemeProvider theme={theme}>
 					<CssBaseline />
 					{getLayout()}
