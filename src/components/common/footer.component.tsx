@@ -1,15 +1,22 @@
 import { Box, Container, Typography } from "@mui/material";
+import { StyledFooter } from "./footer.styled";
 
 export default function Footer() {
 	return (
-		<footer>
+		<StyledFooter>
 			<Container>
-				<Box sx={{ display: "flex", justifyContent: "space-between" }}>
+				<Box
+					sx={{
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center",
+					}}
+				>
 					<Typography>
-						&copy; - alexSHARKE {new Date().getFullYear()}
+						alexSHARKE {new Date().getFullYear()} &copy;
 					</Typography>
 				</Box>
 			</Container>
-		</footer>
+		</StyledFooter>
 	);
 }
