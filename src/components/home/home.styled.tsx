@@ -3,10 +3,7 @@
 import { styled } from "@mui/material";
 
 export const StyledHeader = styled("header")`
-	min-height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	padding: 25px 0;
 	background-color: #000;
 	color: #fff;
 `;
