@@ -1,6 +1,10 @@
 import { Box, Container, Typography, Link as MuiLink } from "@mui/material";
 import SignInForm from "@/components/signIn/signInForm.component";
-import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "alexSHARKE - Login",
+};
 
 const SigninPage: React.FC = () => {
 	return (

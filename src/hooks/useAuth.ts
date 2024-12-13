@@ -1,5 +1,5 @@
 // hooks/useAuth.ts
-import { supabase } from "@/src/lib/supabaseClient";
+import { supabase } from "@/lib/supabaseClient";
 
 export const signUp = async (email: string, password: string) => {
 	const { data, error } = await supabase.auth.signUp({
