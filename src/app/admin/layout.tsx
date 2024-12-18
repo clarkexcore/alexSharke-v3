@@ -1,6 +1,7 @@
 "use client";
 
-import { Box } from "@mui/material";
+import AdminSidebarNav from "@/components/layout/admin/sidebarNav.component";
+import { Box, Grid, Typography } from "@mui/material";
 import { useRef, useState } from "react";
 
 export default function AdminLayout({
@@ -13,8 +14,20 @@ export default function AdminLayout({
 
 	return (
 		<>
+			{/* Desktop Layout */}
 			<Box sx={{ backgroundColor: "#f2f2f2", minHeight: "100vh" }}>
-				{children}
+				<Grid container spacing={2}>
+					<Grid item xs={3}>
+						<AdminSidebarNav />
+					</Grid>
+					<Grid
+						item
+						xs={9}
+						sx={{ paddingRight: "35px", paddingBottom: "50px" }}
+					>
+						<Box sx={{ padding: "1rem 0" }}>{children}</Box>
+					</Grid>
+				</Grid>
 			</Box>
 		</>
 	);

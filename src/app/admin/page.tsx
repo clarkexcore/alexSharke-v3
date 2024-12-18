@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -6,5 +6,11 @@ export const metadata: Metadata = {
 };
 
 export default function AdminPage() {
-	return <Box>Hi - this is admin</Box>;
+	return (
+		<Box>
+			<Typography variant="h1" sx={{ fontSize: 48 }}>
+				Dashboard
+			</Typography>
+		</Box>
+	);
 }
