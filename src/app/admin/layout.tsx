@@ -18,7 +18,7 @@ export default function AdminLayout({
 			<Box sx={{ backgroundColor: "#f2f2f2", minHeight: "100vh" }}>
 				<Grid container spacing={2}>
 					<Grid item xs={3}>
-						<AdminSidebarNav />
+						<AdminSidebarNav active={true} />
 					</Grid>
 					<Grid
 						item
