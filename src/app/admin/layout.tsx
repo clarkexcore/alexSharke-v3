@@ -13,9 +13,15 @@ export default function AdminLayout({
 	const containerRef = useRef<HTMLElement>(null);
 
 	return (
-		<>
+		<Box
+			sx={{
+				backgroundColor: "#f2f2f2",
+				minHeight: "100vh",
+				overflow: "hidden",
+			}}
+		>
 			{/* Desktop Layout */}
-			<Box sx={{ backgroundColor: "#f2f2f2", minHeight: "100vh" }}>
+			<Box sx={{ display: { lg: "block", xs: "none" } }}>
 				<Grid container spacing={2}>
 					<Grid item xs={3}>
 						<AdminSidebarNav active="true" />
@@ -29,6 +35,6 @@ export default function AdminLayout({
 					</Grid>
 				</Grid>
 			</Box>
-		</>
+		</Box>
 	);
 }

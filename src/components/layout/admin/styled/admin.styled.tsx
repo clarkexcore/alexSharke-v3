@@ -24,5 +24,5 @@ export const SideBarStyled = styled(Box)<SideBarProps>(({ active, theme }) => ({
 		width: "calc(350px - (2rem + 32px))",
 		left: active === "true" ? "0" : "calc(-450px + (2rem + 32px))",
 	},
-	backgroundColor: "tomato",
+	backgroundColor: "rgba(0, 0, 0, 0.87)",
 }));

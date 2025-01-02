@@ -3,6 +3,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "@/theme";
 import { headers } from "next/headers";
+import "../global.css";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -17,19 +18,6 @@ export default async function RootLayout({
 	const headersList = await headers();
 	const pathName = headersList.get("x-pathname");
 
-	const getLayout = () => {
-		if (pathName?.startsWith("/admin")) {
-			return (
-				<>
-					<p>This is admin</p>
-					{children}
-				</>
-			);
-		}
-
-		return <>{children}</>;
-	};
-
 	return (
 		<html lang="en">
 			<head>
@@ -43,7 +31,7 @@ export default async function RootLayout({
 			<body suppressHydrationWarning>
 				<ThemeProvider theme={theme}>
 					<CssBaseline />
-					{getLayout()}
+					{children}
 				</ThemeProvider>
 			</body>
 		</html>
