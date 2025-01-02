@@ -1,8 +1,11 @@
+"use client";
+
 import { Box, Container } from "@mui/material";
+import { TopNavStyled } from "./topNav.styled";
 
 export default function TopNav() {
 	return (
-		<Box sx={{ background: "#000", color: "#fff", py: 1 }}>
+		<TopNavStyled>
 			<Container maxWidth="xl">
 				<Box
 					sx={{
@@ -14,6 +17,6 @@ export default function TopNav() {
 					<Box>Links</Box>
 				</Box>
 			</Container>
-		</Box>
+		</TopNavStyled>
 	);
 }

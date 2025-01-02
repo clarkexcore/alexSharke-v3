@@ -5,29 +5,31 @@ import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
 	typography: {
-        fontFamily: "Montserrat, sans-serif",
-        h1: {
-            fontWeight: 900
-        },
-        body1: {
-            fontFamily: "Fira Sans, sans-serif",
-            fontWeight: 300,
-            fontSize: 14,
-        },
-        body2: {
-            fontFamily: "Fira Sans, sans-serif",
-            fontWeight: 200,
-            fontSize: 12
-        }
-    },
-    palette: {
-        primary: {
-            main: "#000"
-        },
-        secondary: {
-            main: "#fff",
-        }
-    }
+		fontFamily: "Montserrat, sans-serif",
+		h1: {
+			fontWeight: 900,
+		},
+		body1: {
+			fontFamily: "Fira Sans, sans-serif",
+			fontWeight: 300,
+			fontSize: 14,
+		},
+		body2: {
+			fontFamily: "Fira Sans, sans-serif",
+			fontWeight: 200,
+			fontSize: 12,
+		},
+	},
+	palette: {
+		primary: {
+			main: "rgba(0,0,0,0.87)",
+			light: "rgba(0,0,0,0.66)",
+			dark: "#000",
+		},
+		secondary: {
+			main: "#fff",
+		},
+	},
 });
 
 export default theme;
