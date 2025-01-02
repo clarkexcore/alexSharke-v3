@@ -3,7 +3,7 @@
 import { Box, Stack } from "@mui/material";
 import { SideBarStyled } from "./styled/admin.styled";
 
-export default function AdminSidebarNav({ active }: { active: boolean }) {
+export default function AdminSidebarNav({ active }: { active: string }) {
 	return (
 		<>
 			<SideBarStyled active={active}>

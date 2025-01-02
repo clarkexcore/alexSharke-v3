@@ -3,7 +3,7 @@ import { Box, BoxProps } from "@mui/material";
 import { styled } from "@mui/material";
 
 interface SideBarProps extends BoxProps {
-	active: boolean;
+	active: string;
 }
 
 export const SideBarStyled = styled(Box)<SideBarProps>(({ active, theme }) => ({
@@ -22,7 +22,7 @@ export const SideBarStyled = styled(Box)<SideBarProps>(({ active, theme }) => ({
 	transition: "all 0.3s",
 	"@media (max-width: 1200px)": {
 		width: "calc(350px - (2rem + 32px))",
-		left: active ? "0" : "calc(-450px + (2rem + 32px))",
+		left: active === "true" ? "0" : "calc(-450px + (2rem + 32px))",
 	},
 	backgroundColor: "tomato",
 }));
