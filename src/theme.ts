@@ -17,6 +17,15 @@ export const montserrat = Montserrat({
 	display: "swap",
 });
 
+declare module "@mui/material/styles" {
+	interface Palette {
+		accent: Palette["primary"];
+	}
+	interface PaletteOptions {
+		accent?: PaletteOptions["primary"];
+	}
+}
+
 const theme = createTheme({
 	typography: {
 		fontFamily: montserrat.style.fontFamily,
@@ -43,6 +52,9 @@ const theme = createTheme({
 		secondary: {
 			main: "#fff",
 			dark: "#F2F2F2",
+		},
+		accent: {
+			main: "red",
 		},
 	},
 });
