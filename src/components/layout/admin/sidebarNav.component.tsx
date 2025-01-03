@@ -1,14 +1,38 @@
-"use client";
+import { Box, Divider, Stack } from "@mui/material";
+import { SideBarStyled, StyledWhiteButton } from "./styled/admin.styled";
+import { signOut } from "@/hooks/useAuth";
+import { useRouter } from "next/navigation";
 
-import { Box, Stack } from "@mui/material";
-import { SideBarStyled } from "./styled/admin.styled";
+export default function AdminSidebarNav({
+	active,
+	setMobileMenuOpen,
+}: {
+	active: string;
+	setMobileMenuOpen?: (open: boolean) => void;
+}) {
+	const router = useRouter();
 
-export default function AdminSidebarNav({ active }: { active: string }) {
+	const adminSignOut = async () => {
+		try {
+			await signOut();
+			router.push("/");
+		} catch (err) {
+			console.error(err);
+			alert("Error signing out of application.");
+		}
+	};
+
 	return (
 		<>
 			<SideBarStyled active={active}>
-				<Box></Box>
-				<Stack>Link</Stack>
+				<Box>
+					<Box sx={{ py: 2 }}>LOGO</Box>
+					<Divider sx={{ backgroundColor: "#fff" }} />
+					<Stack sx={{ py: 2 }}>Link</Stack>
+				</Box>
+				<StyledWhiteButton onClick={adminSignOut}>
+					Logout
+				</StyledWhiteButton>
 			</SideBarStyled>
 		</>
 	);
