@@ -15,7 +15,7 @@ export default function AdminSidebarNav({
 	const adminSignOut = async () => {
 		try {
 			await signOut();
-			router.push("/");
+			router.refresh();
 		} catch (err) {
 			console.error(err);
 			alert("Error signing out of application.");

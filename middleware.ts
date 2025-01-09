@@ -13,13 +13,20 @@ export async function middleware(req: NextRequest) {
 		data: { session },
 	} = await supabase.auth.getSession();
 
-	if (!session) {
+	console.log(session);
+
+	if (!session && isProtectedRoute(req.nextUrl.pathname)) {
 		return NextResponse.rewrite(new URL("/login", req.url));
 	}
 
 	return res;
 }
 
+function isProtectedRoute(pathname: string): boolean {
+	const protectedRoutes = ["/admin"];
+	return protectedRoutes.some(route => pathname.startsWith(route));
+}
+
 export const config = {
-	matcher: ["/((?!api|_next/static|_next/image|favicon.ico|$|sign-up).*)"],
+	matcher: ["/admin/:path*"],
 };

@@ -3,6 +3,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "@/theme";
 import "../global.css";
+import { AuthProvider } from "@/components/auth/auth.provider";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -24,10 +25,12 @@ export default async function RootLayout({
 				<link rel="preconnect" href="https://fonts.gstatic.com" />
 			</head>
 			<body suppressHydrationWarning>
-				<ThemeProvider theme={theme}>
-					<CssBaseline />
-					{children}
-				</ThemeProvider>
+				<AuthProvider>
+					<ThemeProvider theme={theme}>
+						<CssBaseline />
+						{children}
+					</ThemeProvider>
+				</AuthProvider>
 			</body>
 		</html>
 	);
